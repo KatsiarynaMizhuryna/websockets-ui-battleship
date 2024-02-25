@@ -12,7 +12,23 @@ export interface RoomUser {
 
 export interface Room {
   roomId: number;
-  roomPlayers: RoomUser[];
+  roomUsers: RoomUser[];
+}
+
+export interface Game {
+  gameId: number;
+  ships: Sheep[];
+  indexPlayer: number;
+}
+
+export interface Sheep {
+  position: {
+    x: number;
+    y: number;
+  };
+  direction: boolean;
+  length: number;
+  type: "small" | "medium" | "large" | "huge";
 }
 
 export const rooms: Room[] = [];
