@@ -10,6 +10,11 @@ export interface RoomUser {
   index: number;
 }
 
+export interface Winner {
+  name: string;
+  wins: number;
+}
+
 export interface Room {
   roomId: number;
   roomUsers: RoomUser[];
@@ -34,3 +39,4 @@ export interface Sheep {
 export const rooms: Room[] = [];
 export const players: Player[] = [];
 export const roomPlayers: RoomUser[] = [];
+export const winners: Winner[] = [];
