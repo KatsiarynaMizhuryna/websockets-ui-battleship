@@ -11,7 +11,6 @@ wsServer.on("connection", (clientSocket: WsWithId) => {
   allSockets.push(clientSocket);
   clientSocket.on("message", (message: string) => {
     const parsedData = JSON.parse(message);
-    console.log(parsedData);
     handler(parsedData, clientSocket);
   });
 

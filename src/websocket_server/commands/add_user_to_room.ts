@@ -1,5 +1,5 @@
 import { generateId } from "../../utils/generateId.js";
-import { players, rooms } from "../../utils/models.js";
+import { Game, games, players, rooms } from "../../utils/models.js";
 import { WsWithId } from "../../utils/types.js";
 import { wsServer } from "../ws.js";
 import { updateRooms } from "./update_room.js";
@@ -15,11 +15,17 @@ export const addUserToRoom = (data: any, ws: WsWithId) => {
     freeRoom.roomUsers.push({ name: player.name, index: player.id });
   }
   if (freeRoom?.roomUsers.length === 2) {
+    const currentGame: Game = {
+      gameId: generateId(),
+      ships: [],
+      indexPlayer: player?.id,
+    };
+    games.push(currentGame);
     const response = {
       type: "create_game",
       data: JSON.stringify({
-        idGame: generateId(),
-        idPlayer: player?.id,
+        idGame: currentGame.gameId,
+        idPlayer: currentGame.indexPlayer,
       }),
       id: 0,
     };

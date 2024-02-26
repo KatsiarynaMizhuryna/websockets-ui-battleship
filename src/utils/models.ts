@@ -22,11 +22,11 @@ export interface Room {
 
 export interface Game {
   gameId: number;
-  ships: Sheep[];
-  indexPlayer: number;
+  ships: Ship[];
+  indexPlayer: number | undefined;
 }
 
-export interface Sheep {
+export interface Ship {
   position: {
     x: number;
     y: number;
@@ -40,3 +40,5 @@ export const rooms: Room[] = [];
 export const players: Player[] = [];
 export const roomPlayers: RoomUser[] = [];
 export const winners: Winner[] = [];
+export const ships: Ship[] = [];
+export const games: Game[] = [];
