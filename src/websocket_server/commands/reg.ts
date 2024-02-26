@@ -6,7 +6,9 @@ import { updateWinners } from "./update_winners.js";
 
 export const reg = (ws: WsWithId, data: any) => {
   const { name, password } = JSON.parse(data);
-  console.log(name, password);
+  if (!name || !password) {
+    throw new Error("Invalid input. Both name and password are required.");
+  }
   const player = players.find((player) => player.name === name);
   if (player) {
     const response = {
