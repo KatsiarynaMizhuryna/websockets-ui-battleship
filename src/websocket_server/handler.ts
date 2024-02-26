@@ -1,5 +1,5 @@
 import { WsWithId } from "../utils/types.js";
-import { addShips } from "./commands/add_ships.js";
+//import { addShips } from "./commands/add_ships.js";
 import { addUserToRoom } from "./commands/add_user_to_room.js";
 import { createRoom } from "./commands/create_room.js";
 import { reg } from "./commands/reg.js";
