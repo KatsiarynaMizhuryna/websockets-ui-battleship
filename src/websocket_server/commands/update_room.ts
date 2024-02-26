@@ -1,11 +1,16 @@
 import { rooms } from "../../utils/models.js";
-import { WsWithId } from "../../utils/types.js";
+import { wsServer } from "../ws.js";
+import { WebSocket } from "ws";
 
-export function updateRooms(ws: WsWithId) {
+export function updateRooms() {
   const response = {
     type: "update_room",
     data: JSON.stringify(rooms),
     id: 0,
   };
-  ws.send(JSON.stringify(response));
+  wsServer.clients.forEach((client: WebSocket) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(response));
+    }
+  });
 }

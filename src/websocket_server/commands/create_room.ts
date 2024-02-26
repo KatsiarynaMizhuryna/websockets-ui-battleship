@@ -13,5 +13,5 @@ export const createRoom = (ws: WsWithId) => {
   if (player) {
     newRoom.roomUsers.push({ name: player.name, index: player.id });
   }
-  updateRooms(ws);
+  updateRooms();
 };

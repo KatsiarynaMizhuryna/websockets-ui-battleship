@@ -1,6 +1,7 @@
 import { generateId } from "../../utils/generateId.js";
 import { Player, players } from "../../utils/models.js";
 import { WsWithId } from "../../utils/types.js";
+import { updateRooms } from "./update_room.js";
 
 export const reg = (ws: WsWithId, data: any) => {
   const { name, password } = JSON.parse(data);
@@ -38,7 +39,7 @@ export const reg = (ws: WsWithId, data: any) => {
       }),
       id: 0,
     };
-
+    updateRooms();
     ws.send(JSON.stringify(response));
   }
 };
