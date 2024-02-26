@@ -6,15 +6,12 @@ import { reg } from "./commands/reg.js";
 export const handler = (data: any, ws: WsWithId) => {
   switch (data.type) {
     case "reg":
-      console.log("reg:", data.type);
       reg(ws, data.data);
       break;
     case "create_room":
-      console.log("reg:", data.type);
       createRoom(ws);
       break;
     case "add_user_to_room":
-      console.log(data.data);
       addUserToRoom(data.data, ws);
       break;
     default:
